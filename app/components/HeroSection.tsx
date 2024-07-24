@@ -8,7 +8,7 @@ export default function HeroSection() {
   const [showNavbarLogo, setShowNavbarLogo] = useState(false);
   const firstSectionRef = useRef<HTMLDivElement | null>(null);
   const [firstSectionHeight, setFirstSectionHeight] = useState(0);
-  const fontSize = useTransform(scrollY, [0, firstSectionHeight * 0.92], ['50rem', '16rem']);
+  const fontSize = useTransform(scrollY, [0, firstSectionHeight * 0.91], ['50rem', '16rem']);
 
   const updateHeight = () => {
     if (firstSectionRef.current) {
@@ -23,14 +23,14 @@ export default function HeroSection() {
   }, []);
 
   useEffect(() => {
-    const unsubscribe = scrollY.onChange((v) => setShowNavbarLogo(v > firstSectionHeight * 0.9));
+    const unsubscribe = scrollY.onChange((v) => setShowNavbarLogo(v > firstSectionHeight * 0.89));
     return () => unsubscribe();
   }, [scrollY, firstSectionHeight]);
 
   return (
     <>
       {showNavbarLogo && (
-        <div className="hidden md:block">
+        <div>
           <Navbar />
         </div>
       )}
